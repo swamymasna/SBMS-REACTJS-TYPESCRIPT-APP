@@ -1,0 +1,45 @@
+server:
+  port: 8082
+  
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user_db
+    username: root
+    password: root
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+       format_sql: true
+       
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+    
+springdoc:
+  api-docs:
+    path: /api-doc
+      
+logging:
+  file:
+    name: F:/LogFiles/users.log
+
+user-app:
+  messages:
+    user-not-found : "User Not Found With Id : %s"
+    user-deletion-succeeded : "User Deleted Successfully With Id : "
+    save-user-service-exception : "Exception Occured While Saving Data into Database"
+    list-user-service-exception : "Exception Occured While Fetching Data from Database"
+    update-user-service-exception : "Exception Occured While Updating Data into the Database"
+    delete-user-service-exception : "Exception Occured While Deleting Data From the Database"
